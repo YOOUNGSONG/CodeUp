@@ -1,0 +1,39 @@
+#include <stdio.h>
+int arr[1001][1001];
+int brr[1001][1001];
+int crr[1001][1001];
+int main(){
+	int n,m,a,b;
+	int sum=0;
+	scanf("%d %d", &n, &m);
+	for(int i=0; i<n; i++){
+		for(int j=0; j<m; j++){
+			scanf("%d", &arr[i][j]);
+		}
+	}
+	scanf("%d %d", &a, &b);
+	for(int i=0; i<a; i++){
+		for(int j=0; j<b; j++){
+			scanf("%d", &brr[i][j]);
+		}
+	}
+	if(m != a){
+		printf("ERROR");
+		return 0;
+	}
+	for(int i=0; i<n; i++){
+		for(int k=0; k<b; k++){
+			for(int j=0; j<m; j++){
+				sum+= arr[i][j] * brr[j][k];
+			}
+			crr[i][k] = sum;
+			sum =0;
+		}
+	}
+	for(int i=0; i<n; i++){
+		for(int k=0; k<b; k++){
+			printf("%d ", crr[i][k]);
+		}
+		printf("\n");
+	}
+}
