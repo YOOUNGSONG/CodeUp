@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+int a, x;
+int arr[8] = {50000, 10000, 5000, 1000, 500, 100, 50, 10};
+int main(){
+	scanf("%d", &a);
+	for(int i=0; i<8; i++){
+		x += a/arr[i];
+		a %= arr[i];
+	}
+	printf("%d", x);
+}
