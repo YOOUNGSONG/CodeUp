@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+int a; int x; int y; int q;
+int f(int x, int y);
+int main(){
+	scanf("%d", &a);
+	f(x, y);
+	printf("%d", q);
+}
+int f(int x, int y){
+	y--;
+	if(a-x>=1) f(x+1, y);
+	if(a-x>=2) f(x+2, y);
+	if(a-x>=3 && y<=0) f(x+3, 3);
+	if(a==x) q+=1;
+}
