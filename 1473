@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+int arr[101][101];
+int main(){
+	int n, m; int t=1;
+	scanf("%d %d", &n, &m);
+	for(int i=0; i<n; i++){
+		if(i%2){
+			for(int j=m-1; j>=0; j--){
+				arr[n-i-1][j] = t++;
+			}
+		}
+		else{
+			for(int j=0; j<m; j++){
+				arr[n-i-1][j] = t++;
+			}
+		}
+	}
+	for(int i=0; i<n; i++, printf("\n")){
+		for(int j=0; j<m; j++, printf(" ")){
+			printf("%d", arr[i][j]);
+		}
+	}
+}
