@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef struct paper{
+	int q;
+	int w;
+	int e;
+	int r;
+}p;
+
+p arr[4];
+
+int main(){
+	int k, h;
+	int l=0, t=0;
+	scanf("%d", &k);
+	int r=pow(2,k), b=pow(2,k);
+	for(int i=0; i<4; i++){
+		arr[i].q = i;
+		arr[i].e = i+2>3 ? i-2:i+2;
+		arr[i].w = 1-i<0 ? 5-i:1-i;
+		arr[i].r = 3-i;
+	}
+	for(int i=0; i<2*k; i++){
+		char c;
+		cin >> c;
+		switch(c){
+			case 'D':
+				t = (t + b)/2;
+				break;
+			case 'U':
+				b = (t + b)/2;
+				break;
+			case 'R':
+				l = (l + r)/2;
+				break;
+			case 'L':
+				r = (l + r)/2;
+				break;
+		}
+	}
+	scanf("%d", &h);
+	for(int i=0; i<pow(2,k); i++){
+		for(int j=0; j<pow(2,k); j++){
+			if(abs(l-j)%2 == 0 && abs(t-i)%2 == 0)
+				printf("%d", arr[h].q);
+			else if(abs(l-j)%2 == 1 && abs(t-i)%2 == 0)
+				printf("%d", arr[h].w);
+			else if(abs(l-j)%2 == 0 && abs(t-i)%2 == 1)
+				printf("%d", arr[h].e);
+			else if(abs(l-j)%2 == 1 && abs(t-i)%2 == 1)
+				printf("%d", arr[h].r);
+			printf("%s", j == pow(2,k)-1 ? "" : " ");
+		}
+		if(i == pow(2,k) - 1) break;
+		printf("\n");
+	}
+}
