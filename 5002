@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+char s[100001];
+int main(){
+    scanf("%s", s);
+    int x=0, d=0, c=0, o=0;
+    for (int i=0; i<strlen(s); i++){
+        if(s[i] == '('){
+            d++;
+            o++;
+        }
+        else{
+            d--;
+            c++;
+        }
+        if(d <= 1)
+            o = 0;
+        if(d == -1){
+            x = c;
+            break;
+        }
+    }
+    if(d > 0)
+        x = o;
+    printf("%d", x);
+}
